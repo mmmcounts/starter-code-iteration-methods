@@ -42,7 +42,7 @@ function printKata(kataNumber, object) {
 const greenEyes1 = users.filter(user => user.eyeColor === "green")
 printKata(0, greenEyes1)
 
-const active = users.filter(user => user.isActive === "true")
+const active = users.filter(user => user.isActive === true)
 printKata(1, active)
 
 const email = users.map(user => user.email)
@@ -54,12 +54,16 @@ printKata(3, ovation)
 const age = users.find(user => user.age > 38)
 printKata(4, age)
 
-printKata(5, age, active)
+ageActive = users.filter(user => user.isActive).find(user => user.age > 38)
+//could have done active.find(etc.) but this is better for showing where it came from
+printKata(5, ageActive)
 
-const zenco = users.filter(user => user.company === "ZENCO")
-const balance = users.map(user => user.balance)
-printKata(6, zenco, balance)
+// const zenco = users.filter(user => user.company === "ZENCO")
+// const balance = users.map(user => user.balance)
+const zencoBalance = users.filter(user => user.company === "ZENCO").map(user => user.balance)
+printKata(6, zencoBalance)
 
-const fugiat = users.includes(user => user.tags === "fugiat")
-const ageOf = users.map(user => user.age)
-printKata(7, ageOf, fugiat)
+// const fugiat = users.includes("fugiat")
+// const ageOf = users.map(user => user.age)
+ageOfFugiat = users.filter(user => user.tags.includes("fugiat")).map(user => user.age)
+printKata(7, ageOfFugiat)
